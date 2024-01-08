@@ -1,0 +1,22 @@
+<div>
+    <h1>Workspaces</h1>
+    <ul>
+      <li *ngFor="let workspace of workspaces$ | async">{{ workspace.title }}</li>
+    </ul>
+  
+    <h1>Boards</h1>
+    <ul>
+      <li *ngFor="let board of boards$ | async">{{ board.title }}</li>
+    </ul>
+  
+    <h1>Todolists</h1>
+    <ul>
+      <li *ngFor="let todolist of todolists$ | async">{{ todolist.name }}</li>
+    </ul>
+  
+    <h1>Todos</h1>
+    <ul>
+      <li *ngFor="let todo of todos$ | async">{{ todo.title }}</li>
+    </ul>
+  </div>
+  

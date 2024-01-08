@@ -1,0 +1,56 @@
+<div class="container d-flex flex-column gap-5  justify-content-center align-items-center " style="height: 100vh;">
+    <div class="card" style="width: 18rem;">
+        <div class="card-title d-flex justify-content-center ">
+            <h3>Workspaces</h3>
+        </div>
+        <ul class="list-group list-group-flush d-flex flex-row justify-content-between " *ngFor="let item of workspace$|async">
+            <li class="list-group-item">{{item.title}}</li>
+            <button class="border-0 bg-transparent" (click)="on_workspaceDelete($event,item.id)"><i class="pi pi-trash"></i></button>
+            <button class="border-0 bg-transparent" (click)="show_updateWorkspace(item.id)"><i class="pi pi-trash"></i></button>
+        </ul>
+        <p-toast></p-toast>
+        <p-confirmDialog></p-confirmDialog>
+    </div>
+
+    
+    
+    <div class="addbtn">
+        <button class="btn btn-success" (click)="show_addWorkspace()">
+            <i class="pi pi-plus"></i>
+            Add Workspace
+        </button>
+    </div>
+
+    <p-dialog header="Header" [(visible)]="visible_addWorkspace" [style]="{width: '50vw'}">
+        <form [formGroup]="workspaceform" (ngSubmit)="on_addWorkspace()">
+            <div class="mb-3">
+              <label for="w_name" class="form-label">Workspace Name</label>
+              <input type="text" class="form-control" id="w_name" formControlName="workspacetitle" autocomplete="off">
+            </div>
+            <div class="mb-3">
+              <label for="w_desc" class="form-label"> Workspace Description</label>
+              <input type="text" class="form-control" id="w_desc" formControlName="workspacedis" autocomplete="off">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </p-dialog>
+
+    <p-dialog header="Header" [(visible)]="visible_updateWorkspace" [style]="{width: '50vw'}">
+        <form  [formGroup]="workspaceform" (ngSubmit)="on_updateWorkspace()">
+            <div class="mb-3">
+              <label for="w_name" class="form-label">Workspace Name</label>
+              <input type="text"   class="form-control" id="w_name" formControlName="workspacetitle" autocomplete="off">
+            </div>
+            <div class="mb-3">
+              <label for="w_desc" class="form-label"> Workspace Description</label>
+              <input type="text" class="form-control" id="w_desc" formControlName="workspacedis" autocomplete="off">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </p-dialog>
+    
+
+
+</div>
